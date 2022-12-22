@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const x = +prompt("1 - машина готова, 0 - машина с дефектами");
+        class Conveyor{
+            setBody(){
+                console.log('Кузов добавлен');
+            }
+            getEngine(){
+                console.log("Движок добавлен!");
+            }
+            setEngine(){
+                console.log("Движок установлен!");
+            }
+            setInterior(){
+                console.log("Экстрьер добавлен!");
+            }
+            getInterior(){
+                console.log("интерьер обновлен!");
+            }
+            setExterior(){
+                console.log("Добавление интерьера");
+            }
+            setWheels(){
+                console.log("добавление колес");
+            }
+            addElectronics(){
+                console.log("Электроника добавлена");
+            }
+            paint(){
+                console.log("Машина покрашена");
+            }
+
+        }
+
+        class ConveyorFacade{
+            constructor(car){
+                this.car = car;
+            }
+
+            assembleCar(){
+                this.car.setBody();
+                this.car.setEngine();
+                this.car.setInterior();
+                this.car.setExterior();
+                this.car.setWheels();
+                this.car.addElectronics();
+                this.car.paint();
+            }
+            braks(){
+                console.log("Список установки после брака:");
+            }
+            changeEngine(){   //установка нового двигателяя после брака, ну или если брак двигателя
+                this.car.getEngine();
+                this.car.setEngine();
+            }
+            changeInterior(){   //установка нового интерьера после брака, ну или если брак интерьера
+                this.car.getInterior();
+                this.car.setInterior();
+            }
+        }
+
+        if(x == 1){
+        const conveyor = new ConveyorFacade(new Conveyor());
+        const car = conveyor.assembleCar();
+        console.log("машина готова");
+        }
+        else{
+            const conveyor = new ConveyorFacade(new Conveyor());
+            let car = conveyor.assembleCar();
+            car = conveyor.braks();
+            car = conveyor.changeEngine();
+            car = conveyor.changeInterior();
+            console.log("Браки устранены");
+        }
+
+    </script>
+</body>
+</html>
